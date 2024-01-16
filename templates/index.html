@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Lista de Usuários</title>
+    <!-- Link para o CDN do Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #131313;
+            color: #FFD700; /* Amarelo */
+        }
+
+        .container {
+            background-color: #090909;
+            border-radius: 30px;
+            padding: 30px;
+        }
+
+        h1, h6 {
+            color: #FFD700; /* Amarelo */
+        }
+
+        .table {
+            background-color: #292929;
+            color: #FFD700; /* Amarelo */
+        }
+
+        .table a {
+            color: #5d92fd; /* Amarelo */
+        }
+
+        .table a:hover {
+            color: #3b77ee; /* Vermelho */
+        }
+
+        .text-danger {
+            background-color: #8B0000; /* Marrom escuro */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Lista de Usuários da SmartFit</h1>
+    <h6>Os usuários que estiverem com os pagamentos atrasados estarão ressaltados na cor vermelha.</h6>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Situação</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usuario in usuarios %}
+            {% if atrasado(usuario.data_pagamento_mensalidade) %}
+                <tr class="text-danger">
+                    <th scope="row">{{ usuario.id }}</th>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.idade }}</td>
+                    <td>ATRASADO</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <th scope="row">{{ usuario.id }}</th>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.idade }}</td>
+                    <td>Em dia</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+            <!-- Adicione mais linhas conforme necessário -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Link para o CDN do Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-eMNCO9
+</body>
+</html>
